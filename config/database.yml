@@ -1,0 +1,19 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8mb4
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: <%= ENV.fetch("DB_USER") %>
+  password: <%= ENV.fetch("DB_PASS") %>
+  host: <%= ENV.fetch("DB_HOST") %>
+
+development:
+  <<: *default
+  database: gns_doctor_appointment_development
+
+test:
+  <<: *default
+  database: gns_doctor_appointment_test
+
+production:
+  <<: *default
+  database: gns_doctor_appointment_production
