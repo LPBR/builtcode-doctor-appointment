@@ -16,5 +16,8 @@
 /config/master.key
 .env
 
+# Ignore public folder
+public
+
 # Ignore node_modules
 node_modules
