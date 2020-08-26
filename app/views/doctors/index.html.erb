@@ -1,0 +1,21 @@
+<table>
+  <thead>
+    <tr>Nome</tr>
+    <tr>CRM</tr>
+    <tr colspan="2"></tr>
+  </thead>
+  <tbody>
+    <% @doctors.each do |doctor| %>
+      <tr>
+        <td><%= doctor.name %></td>
+        <td><%= "#{doctor.crm}/#{doctor.crm_uf}" %></td>
+        <td><%= link_to "Editar", edit_doctor_path(doctor) %></td>
+        <td><%= link_to "Excluir", doctor, method: :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% if @doctors.empty? %>
+  <p class="empty-list">Nenhum médico cadastrado</p>
+<% end %>
