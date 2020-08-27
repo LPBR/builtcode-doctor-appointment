@@ -3,4 +3,6 @@ class Doctor < ApplicationRecord
   validates_length_of :name, maximum: 255
   validates_length_of :crm, minimum: 4, maximum: 10
   validates_length_of :crm_uf, is: 2
+  validates_numericality_of :crm
+  validates_uniqueness_of :crm, scope: [:crm_uf], case_sensitive: false
 end
