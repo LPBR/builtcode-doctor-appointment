@@ -16,7 +16,9 @@
       <%= render partial: "layouts/navbar" %>
     </header>
 
-    <main class="container-fluid mt-3">
+    <main role="main" class="container-fluid mt-3">
+      <%= render partial: "layouts/alert" %>
+
       <%= yield %>
     </main>
 
