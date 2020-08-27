@@ -1,0 +1,8 @@
+pt-BR:
+  activerecord:
+    attributes:
+      patient:
+        name: Nome
+        cpf: CPF
+        birth_date: Data de Nascimento
+        doctor_id: Médico
