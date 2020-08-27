@@ -1,0 +1,38 @@
+<div class="card">
+  <div class="card-header d-flex flex-row justify-content-between align-items-center">
+    <h1>Listagem de consultas cadastradas</h1>
+    <%= link_to "Cadastrar", new_appointment_path, class: "btn btn-primary" %>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col" class="w-25">Nome do Paciente</th>
+            <th scope="col" class="w-25">Nome do Médico</th>
+            <th scope="col" class="w-50">Data/Hora</th>
+            <th scope="col" colspan="2"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @appointments.each do |appointment| %>
+            <tr>
+              <td><%= appointment.patient.name %></td>
+              <td><%= appointment.doctor.name %></td>
+              <td>
+                <%= appointment.starts_at.strftime("%d/%m/%Y %H:%M") %>
+                - <%= appointment.ends_at.strftime("%d/%m/%Y %H:%M") %>
+              </td>
+              <td><%= link_to "Editar", edit_appointment_path(appointment) %></td>
+              <td><%= link_to "Excluir", appointment, method: :delete %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <% if @appointments.empty? %>
+      <p class="empty-list">Nenhuma consulta cadastrada</p>
+    <% end %>
+  </div>
+</div>

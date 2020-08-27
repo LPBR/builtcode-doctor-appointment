@@ -2,8 +2,6 @@ require 'rails_helper'
 
 RSpec.feature "CreatesPatient", type: :feature do
   scenario "Creates a new patient" do
-    doctor = create(:doctor)
-
     navigate_to_patients_index
 
     click_on "Cadastrar"

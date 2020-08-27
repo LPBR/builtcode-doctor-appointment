@@ -25,7 +25,6 @@ class Appointment < ApplicationRecord
 
   def valid_ends
     _ends_at = ends_at || Date.today
-    
 
     first_valid_interval = Range.new(
       DateTime.new(_ends_at.year, _ends_at.month, _ends_at.day, 9, 30, 0, "-0300").to_i,
