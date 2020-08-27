@@ -1,5 +1,5 @@
 class PatientsController < ApplicationController
-  before_action :set_patient, only: %i(edit update)
+  before_action :set_patient, only: %i(edit update destroy)
   before_action :set_doctors, only: %i(new edit)
 
   def index
@@ -30,6 +30,12 @@ class PatientsController < ApplicationController
       set_doctors
       render :edit
     end
+  end
+
+  def destroy
+    @patient.destroy
+
+    redirect_to patients_path, alert: { success: "Paciente excluído com sucesso." }
   end
 
   private
