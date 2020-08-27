@@ -1,5 +1,5 @@
 {
-  "name": "gns_doctor_appointment",
+  "name": "builtcode_doctor_appointment",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.14.0",

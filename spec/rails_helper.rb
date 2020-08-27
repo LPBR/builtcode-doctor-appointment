@@ -74,6 +74,9 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
+  # Configure features support module for the desired spec types
+  config.include Features, type: :feature
+
   config.before(:each, js: true) do
     Capybara.page.driver.browser.manage.window.maximize
   end

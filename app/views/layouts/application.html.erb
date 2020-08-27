@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
-    <title>Gns Doctor Appointment</title>
+    <title>builtcode - Doctor Appointment</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta charset="utf-8">
@@ -12,6 +12,14 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <%= render partial: "layouts/navbar" %>
+    </header>
+
+    <main class="container-fluid mt-3">
+      <%= yield %>
+    </main>
+
+    <footer></footer>
   </body>
 </html>

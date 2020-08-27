@@ -1,0 +1,32 @@
+<div class="card">
+  <div class="card-header">
+    <h1>Listagem de médicos cadastrados</h1>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col" class="w-50">Nome</th>
+            <th scope="col" class="w-50">CRM</th>
+            <th scope="col" colspan="2"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @doctors.each do |doctor| %>
+            <tr>
+              <td><%= doctor.name %></td>
+              <td><%= "#{doctor.crm}/#{doctor.crm_uf}" %></td>
+              <td><%= link_to "Editar", edit_doctor_path(doctor) %></td>
+              <td><%= link_to "Excluir", doctor, method: :delete %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <% if @doctors.empty? %>
+      <p class="empty-list">Nenhum médico cadastrado</p>
+    <% end %>
+  </div>
+</div>
