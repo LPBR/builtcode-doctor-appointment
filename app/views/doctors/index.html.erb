@@ -17,7 +17,7 @@
           <% @doctors.each do |doctor| %>
             <tr>
               <td><%= doctor.name %></td>
-              <td><%= "#{doctor.crm}/#{doctor.crm_uf}" %></td>
+              <td><%= doctor.full_crm %></td>
               <td><%= link_to "Editar", edit_doctor_path(doctor) %></td>
               <td><%= link_to "Excluir", doctor, method: :delete %></td>
             </tr>
