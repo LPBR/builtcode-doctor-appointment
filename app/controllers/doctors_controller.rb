@@ -1,5 +1,5 @@
 class DoctorsController < ApplicationController
-  before_action :set_doctor, only: %i(edit update)
+  before_action :set_doctor, only: %i(edit update destroy)
 
   def index
     @doctors = Doctor.select(:id, :name, :crm, :crm_uf).order(name: :asc)
@@ -27,6 +27,12 @@ class DoctorsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @doctor.destroy
+
+    redirect_to doctors_path, alert: { success: "Médico excluído com sucesso." }
   end
 
   private
