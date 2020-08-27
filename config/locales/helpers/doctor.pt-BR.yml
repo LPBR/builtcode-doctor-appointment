@@ -3,3 +3,4 @@ pt-BR:
     submit:
       doctor:
         create: "Salvar"
+        update: "Salvar"
