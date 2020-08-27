@@ -12,8 +12,6 @@ RSpec.feature "CreatesPatient", type: :feature do
     fill_in "CPF", with: Faker::IDNumber.brazilian_citizen_number
     fill_in "Data de Nascimento", with: Faker::Date.birthday(min_age: 18, max_age: 65)
 
-    select doctor.name_with_full_crm, from: "Médico"
-
     click_on "Salvar"
 
     expect(page).to have_css ".toast-body", text: "Paciente cadastrado com sucesso."

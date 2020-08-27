@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_27_074114) do
+ActiveRecord::Schema.define(version: 2020_08_27_174406) do
+
+  create_table "appointments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.datetime "starts_at"
+    t.datetime "ends_at"
+    t.bigint "patient_id"
+    t.bigint "doctor_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["doctor_id"], name: "index_appointments_on_doctor_id"
+    t.index ["patient_id"], name: "index_appointments_on_patient_id"
+  end
 
   create_table "doctors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name"
@@ -25,11 +36,10 @@ ActiveRecord::Schema.define(version: 2020_08_27_074114) do
     t.string "name"
     t.date "birth_date"
     t.string "cpf", limit: 11
-    t.bigint "doctor_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["doctor_id"], name: "index_patients_on_doctor_id"
   end
 
-  add_foreign_key "patients", "doctors"
+  add_foreign_key "appointments", "doctors"
+  add_foreign_key "appointments", "patients"
 end
