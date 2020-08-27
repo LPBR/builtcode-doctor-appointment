@@ -1,0 +1,7 @@
+pt-BR:
+  activerecord:
+    attributes:
+      doctor:
+        name: Nome
+        crm: CRM
+        crm_uf: UF do CRM
