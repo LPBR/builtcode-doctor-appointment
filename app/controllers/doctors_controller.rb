@@ -30,9 +30,12 @@ class DoctorsController < ApplicationController
   end
 
   def destroy
-    @doctor.destroy
-
-    redirect_to doctors_path, alert: { success: "Médico excluído com sucesso." }
+    if @doctor.destroy
+      redirect_to doctors_path, alert: { success: "Médico excluído com sucesso." }
+    else
+      redirect_to doctors_path,
+                  alert: { error: "Médico com pacientes associados não pode ser excluído." }
+    end
   end
 
   private
