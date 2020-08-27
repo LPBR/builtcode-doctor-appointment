@@ -1,0 +1,11 @@
+pt-BR:
+  activerecord:
+    errors:
+      messages: 
+        blank: deve ser informado
+        not_a_number: deve ser um número
+        too_long: deve possuir no máximo %{count} caractéres
+        too_short: deve possuir no mínimo %{count} caractéres
+        wrong_length: deve possuir %{count} caractéres
+        taken: já está em uso
+        numericality: deve ser um número

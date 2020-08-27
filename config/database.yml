@@ -8,12 +8,12 @@ default: &default
 
 development:
   <<: *default
-  database: gns_doctor_appointment_development
+  database: builtcode_doctor_appointment_development
 
 test:
   <<: *default
-  database: gns_doctor_appointment_test
+  database: builtcode_doctor_appointment_test
 
 production:
   <<: *default
-  database: gns_doctor_appointment_production
+  database: builtcode_doctor_appointment_production
