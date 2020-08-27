@@ -1,5 +1,6 @@
 class PatientsController < ApplicationController
-  before_action :set_doctors, only: %i(new)
+  before_action :set_patient, only: %i(edit update destroy)
+  before_action :set_doctors, only: %i(new edit)
 
   def index
     @patients = Patient.select(:id, :name, :cpf, :birth_date, :doctor_id).includes(:doctor).
@@ -20,10 +21,31 @@ class PatientsController < ApplicationController
     end
   end
 
+  def edit; end
+
+  def update
+    if @patient.update(patient_params)
+      redirect_to patients_path, alert: { success: "Paciente atualizado com sucesso." }
+    else
+      set_doctors
+      render :edit
+    end
+  end
+
+  def destroy
+    @patient.destroy
+
+    redirect_to patients_path, alert: { success: "Paciente excluído com sucesso." }
+  end
+
   private
 
   def patient_params
     params.require(:patient).permit %i(id name cpf birth_date doctor_id)
+  end
+
+  def set_patient
+    @patient = Patient.find(params[:id])
   end
 
   def set_doctors
