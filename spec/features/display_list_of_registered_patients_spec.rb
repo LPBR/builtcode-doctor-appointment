@@ -15,7 +15,6 @@ RSpec.feature "DisplayListOfRegisteredPatients", type: :feature do
     expect(page).to have_css "td", text: patient.name
     expect(page).to have_css "td", text: patient.cpf
     expect(page).to have_css "td", text: patient.birth_date.strftime("%d/%m/%Y")
-    expect(page).to have_css "td", text: patient.doctor.name
     expect(page).to have_link(href: edit_patient_path(patient))
     expect(page).to have_link(href: patient_path(patient))
   end

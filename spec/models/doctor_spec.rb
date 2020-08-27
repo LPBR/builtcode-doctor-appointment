@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Doctor, type: :model do
+  describe "associations" do
+    it { should have_many(:patients) }
+    it { should have_many(:appointments) }
+  end
+
   describe "validations" do
     subject { create(:doctor) }
 
@@ -12,7 +17,6 @@ RSpec.describe Doctor, type: :model do
     it { should validate_presence_of(:crm_uf) }
     it { should validate_length_of(:crm_uf).is_equal_to(2) }
     it { should validate_uniqueness_of(:crm).scoped_to(:crm_uf).case_insensitive }
-    it { should have_many(:patients) }
   end
 
   describe "#full_crm" do

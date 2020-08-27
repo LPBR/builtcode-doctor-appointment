@@ -12,7 +12,7 @@ RSpec.feature "DeleteDoctors", type: :feature do
   end
 
   scenario "Unable to delete a doctor with associated patient" do
-    create(:patient, doctor_id: doctor.id)
+    create(:appointment, doctor: doctor)
 
     navigate_to_doctors_index
 

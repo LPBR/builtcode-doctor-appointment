@@ -24,11 +24,5 @@
     <%= f.date_field :birth_date, required: true %>
   </div>
 
-  <div>
-    <%= f.label :doctor_id %>
-    <%= f.select :doctor_id, options_from_collection_for_select(@doctors, :id, :name_with_full_crm),
-                             required: true %>
-  </div>
-
   <%= f.submit %>
 <% end %>
