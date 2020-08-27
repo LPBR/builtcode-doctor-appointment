@@ -1,0 +1,37 @@
+<div class="card">
+  <div class="card-header d-flex flex-row justify-content-between align-items-center">
+    <h1>Listagem de pacientes cadastrados</h1>
+    <%= link_to "Cadastrar", new_patient_path, class: "btn btn-primary" %>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col" class="w-25">Nome</th>
+            <th scope="col" class="w-25">CPF</th>
+            <th scope="col" class="w-25">Data de Nascimento</th>
+            <th scope="col" class="w-25">Nome do Médico</th>
+            <th scope="col" colspan="2"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @patients.each do |patient| %>
+            <tr>
+              <td><%= patient.name %></td>
+              <td><%= patient.cpf %></td>
+              <td><%= patient.birth_date.strftime "%d/%m/%Y" %></td>
+              <td><%= patient.doctor.name %></td>
+              <td><%= link_to "Editar", edit_patient_path(patient) %></td>
+              <td><%= link_to "Excluir", patient, method: :delete %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <% if @patients.empty? %>
+      <p class="empty-list">Nenhum paciente cadastrado</p>
+    <% end %>
+  </div>
+</div>
