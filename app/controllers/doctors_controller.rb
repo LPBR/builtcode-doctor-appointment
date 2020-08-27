@@ -1,4 +1,6 @@
 class DoctorsController < ApplicationController
+  before_action :set_doctor, only: %i(edit update)
+
   def index
     @doctors = Doctor.select(:id, :name, :crm, :crm_uf).order(name: :asc)
   end
@@ -17,9 +19,23 @@ class DoctorsController < ApplicationController
     end
   end
 
+  def edit; end
+
+  def update
+    if @doctor.update(doctor_params)
+      redirect_to doctors_path, alert: { success: "Médico atualizado com sucesso." }
+    else
+      render :edit
+    end
+  end
+
   private
 
   def doctor_params
     params.require(:doctor).permit %i(id name crm crm_uf)
+  end
+
+  def set_doctor
+    @doctor = Doctor.find(params[:id])
   end
 end
