@@ -7,6 +7,14 @@ class Appointment < ApplicationRecord
   validates :starts_at, uniqueness: { scope: [:doctor_id] }
   validates :ends_at, uniqueness: { scope: [:doctor_id] }
 
+  scope :carried_out, -> { where("ends_at <= ?", DateTime.now) }
+
+  def starts_at=(value)
+    super(value)
+
+    self.ends_at = starts_at + 30.minutes if starts_at.present?
+  end
+
   def valid_starts
     _starts_at = starts_at || Date.today
 
