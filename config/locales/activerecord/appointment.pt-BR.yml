@@ -5,3 +5,8 @@ pt-BR:
         starts_at: Data e Hora
         doctor_id: Médico
         patient_id: Paciente
+    errors:
+      models:
+        appointment:
+          taken: " já está ocupada"
+          inclusion: " inválido"

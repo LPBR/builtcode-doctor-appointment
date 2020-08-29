@@ -8,9 +8,9 @@ RSpec.describe Appointment, type: :model do
 
   describe "validations" do
     it { should validate_presence_of(:starts_at) }
-    it { should validate_uniqueness_of(:starts_at) }
+    it { should validate_uniqueness_of(:starts_at).scoped_to(:doctor_id) }
     it { should validate_presence_of(:ends_at) }
-    it { should validate_uniqueness_of(:ends_at) }
+    it { should validate_uniqueness_of(:ends_at).scoped_to(:doctor_id) }
 
     it "validates starts_at 09:00 - 11:30, 13:00 - 18:00" do
       is_expected.to allow_value(DateTime.new(2020, 10, 20, 9, 0, 0, "-0300")).for(:starts_at)

@@ -16,4 +16,10 @@ RSpec.describe Patient, type: :model do
     it { is_expected.to allow_value("91418122041").for(:cpf) }
     it { is_expected.not_to allow_value("91418122040").for(:cpf) }
   end
+
+  describe "#name_with_cpf" do
+    it "returns the name and the cpf inside brackets" do
+      expect(subject.name_with_cpf).to eq("#{subject.name}(#{subject.cpf})")
+    end
+  end
 end

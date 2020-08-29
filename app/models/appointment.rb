@@ -4,8 +4,8 @@ class Appointment < ApplicationRecord
 
   validates :starts_at, inclusion: { in: :valid_starts }, presence: true
   validates :ends_at, inclusion: { in: :valid_ends }, presence: true
-  validates :starts_at, uniqueness: true
-  validates :ends_at, uniqueness: true
+  validates :starts_at, uniqueness: { scope: [:doctor_id] }
+  validates :ends_at, uniqueness: { scope: [:doctor_id] }
 
   def valid_starts
     _starts_at = starts_at || Date.today

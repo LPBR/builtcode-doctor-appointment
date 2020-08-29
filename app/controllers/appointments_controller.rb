@@ -1,6 +1,7 @@
 class AppointmentsController < ApplicationController
-  before_action :set_doctors, only: %i(new)
-  before_action :set_patients, only: %i(new)
+  before_action :set_appointment, only: %i(edit update)
+  before_action :set_doctors, only: %i(new edit)
+  before_action :set_patients, only: %i(new edit)
 
   def index
     @appointments = Appointment.order(starts_at: :desc)
@@ -23,10 +24,26 @@ class AppointmentsController < ApplicationController
     end
   end
 
+  def edit; end
+
+  def update
+    if @appointment.update(appointment_params)
+      redirect_to appointments_path, alert: { success: "Consulta atualizada com sucesso." }
+    else
+      set_doctors
+      set_patients
+      render :edit
+    end
+  end
+
   private
 
   def appointment_params
     params.require(:appointment).permit %i(id starts_at patient_id doctor_id)
+  end
+
+  def set_appointment
+    @appointment = Appointment.find(params[:id])
   end
 
   def set_doctors
