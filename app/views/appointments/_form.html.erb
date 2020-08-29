@@ -1,0 +1,31 @@
+<% if @appointment.errors.any? %>
+  <div class='alert alert-danger'>
+    <ul>
+    <% @appointment.errors.full_messages.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with model: @appointment, local: true do |f| %>
+  
+  <div>
+    <%= f.label :doctor_id %>
+    <%= f.select :doctor_id, options_from_collection_for_select(@doctors, :id, :name_with_full_crm),
+                             required: true %>
+  </div>
+
+  <div>
+    <%= f.label :patient_id %>
+    <%= f.select :patient_id, options_from_collection_for_select(@patients, :id, :name),
+                             required: true %>
+  </div>
+
+  <div>
+    <%= f.label :starts_at %>
+    <%= f.datetime_field :starts_at, placeholder: "dd/mm/yyyy hh:mm" %>
+  </div>
+
+  <%= f.submit %>
+<% end %>
