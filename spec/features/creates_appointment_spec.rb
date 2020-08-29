@@ -10,7 +10,7 @@ RSpec.feature "CreatesAppointment", type: :feature do
     click_on "Cadastrar"
 
     select doctor.name_with_full_crm, from: "Médico"
-    select patient.name, from: "Paciente"
+    select patient.name_with_cpf, from: "Paciente"
     fill_in "Data e Hora",
             with: Faker::Time.between(from: DateTime.now, to: DateTime.now).
               change(hour: 9, min: 0, sec: 0)
