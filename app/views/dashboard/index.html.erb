@@ -1,0 +1,35 @@
+<div class="card">
+  <div class="card-header">
+    <h1>Dashboard</h1>
+    <%= form_with method: :get do %>
+      <%= label_tag :doctor_id, "Médico" %>
+      <%= select_tag :doctor_id,
+                     options_from_collection_for_select(@doctors, :id, :name_with_full_crm),
+                     include_blank: "Todos os médicos" %>
+      <%= submit_tag "Filtrar" %>
+    <% end %>
+  </div>
+  <div class="card-body">
+    <div class="d-flex justify-content-around">
+      <div class="appointments-carried-out-count text-center">
+        <p><%= @dashboard[:appointments_carried_out_count] %></p>
+        <h2>Consultas realizadas</h2>
+      </div>
+
+      <div class="appointments-count text-center">
+        <p><%= @dashboard[:appointments_count] %></p>
+        <h2>Consultas cadastradas</h2>
+      </div>
+
+      <div class="patients-seen-count text-center">
+        <p><%= @dashboard[:patients_seen_count] %></p>
+        <h2>Pacientes atendidos</h2>
+      </div>
+
+      <div class="patients-count text-center">
+        <p><%= @dashboard[:patients_count] %></p>
+        <h2>Pacientes cadastrados</h2>
+      </div>
+    </div>
+  </div>
+</div>
