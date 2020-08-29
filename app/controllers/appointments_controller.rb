@@ -1,5 +1,5 @@
 class AppointmentsController < ApplicationController
-  before_action :set_appointment, only: %i(edit update)
+  before_action :set_appointment, only: %i(edit update destroy)
   before_action :set_doctors, only: %i(new edit)
   before_action :set_patients, only: %i(new edit)
 
@@ -34,6 +34,12 @@ class AppointmentsController < ApplicationController
       set_patients
       render :edit
     end
+  end
+
+  def destroy
+    @appointment.destroy
+
+    redirect_to appointments_path, alert: { success: "Consulta excluída com sucesso." }
   end
 
   private
