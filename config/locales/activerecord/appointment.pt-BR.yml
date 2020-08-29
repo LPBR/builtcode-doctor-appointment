@@ -3,6 +3,7 @@ pt-BR:
     attributes:
       appointment:
         starts_at: Data e Hora
+        ends_at: Data e Hora
         doctor_id: Médico
         patient_id: Paciente
     errors:

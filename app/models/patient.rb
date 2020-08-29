@@ -7,6 +7,8 @@ class Patient < ApplicationRecord
   validates :cpf, length: { is: 11 }, presence: true, uniqueness: { case_sensitive: false }
   validates :cpf, cpf_check_digit: { allow_blank: true }
 
+  scope :seen, -> { joins(:appointments).where("appointments.ends_at <= ?", DateTime.now) }
+
   def name_with_cpf
     "#{name}(#{cpf})"
   end
