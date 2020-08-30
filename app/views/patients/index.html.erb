@@ -19,7 +19,7 @@
             <tr>
               <td><%= patient.name %></td>
               <td><%= patient.cpf %></td>
-              <td><%= patient.birth_date.strftime "%d/%m/%Y" %></td>
+              <td><%= l(patient.birth_date) %></td>
               <td><%= link_to "Editar", edit_patient_path(patient) %></td>
               <td><%= link_to "Excluir", patient, method: :delete %></td>
             </tr>

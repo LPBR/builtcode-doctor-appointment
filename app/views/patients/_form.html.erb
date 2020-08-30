@@ -17,12 +17,14 @@
 
     <div class="form-group col-md-3">
       <%= f.label :cpf %>
-      <%= f.text_field :cpf, minlength: "11", maxlength: "11", required: true, class: "form-control" %>
+      <%= f.text_field :cpf, minlength: "11", maxlength: "11", required: true,
+                       class: "form-control cpf" %>
     </div>
 
     <div class="form-group col-md-3">
       <%= f.label :birth_date %>
-      <%= f.date_field :birth_date, required: true, class: "form-control" %>
+      <%= f.text_field :birth_date, required: true, class: "form-control date",
+                       value: f.object.birth_date.try(:strftime, "%d/%m/%Y") %>
     </div>
   </div>
 

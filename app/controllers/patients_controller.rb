@@ -2,7 +2,7 @@ class PatientsController < ApplicationController
   before_action :set_patient, only: %i(edit update destroy)
 
   def index
-    @patients = Patient.select(:id, :name, :cpf, :birth_date).order(name: :asc)
+    @patients = Patient.select(:id, :name, :cpf, :birth_date).order(name: :asc).decorate
   end
 
   def new
@@ -42,6 +42,6 @@ class PatientsController < ApplicationController
   end
 
   def set_patient
-    @patient = Patient.find(params[:id])
+    @patient = Patient.find(params[:id]).decorate
   end
 end

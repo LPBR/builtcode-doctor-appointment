@@ -53,10 +53,10 @@ class AppointmentsController < ApplicationController
   end
 
   def set_doctors
-    @doctors = Doctor.order(name: :asc)
+    @doctors = Doctor.order(name: :asc).decorate
   end
 
   def set_patients
-    @patients = Patient.order(name: :asc)
+    @patients = Patient.order(name: :asc).decorate
   end
 end

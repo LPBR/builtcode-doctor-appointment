@@ -17,12 +17,14 @@
 
     <div class="form-group col-md-4">
       <%= f.label :crm %>
-      <%= f.text_field :crm, minlength: "4", maxlength: "10", required: true, class: "form-control" %>
+      <%= f.text_field :crm, minlength: "4", maxlength: "10", required: true,
+                       class: "form-control number-only" %>
     </div>
 
     <div class="form-group col-md-2">
       <%= f.label :crm_uf %>
-      <%= f.text_field :crm_uf, minlength: "2", maxlength: "2", required: true, class: "form-control" %>
+      <%= f.text_field :crm_uf, minlength: "2", maxlength: "2", required: true,
+                       class: "form-control" %>
     </div>
   </div>
 

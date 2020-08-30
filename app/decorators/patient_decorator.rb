@@ -1,0 +1,12 @@
+class PatientDecorator < Draper::Decorator
+  delegate_all
+
+  def cpf
+    _cpf = object.cpf.clone
+    _cpf.insert(3, '.').insert(7, '.').insert(11, '-') if object.present?
+  end
+
+  def name_with_cpf
+    "#{object.name} (#{cpf})"
+  end
+end

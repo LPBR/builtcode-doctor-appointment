@@ -9,7 +9,7 @@ class Patient < ApplicationRecord
 
   scope :seen, -> { joins(:appointments).where("appointments.ends_at <= ?", DateTime.now) }
 
-  def name_with_cpf
-    "#{name}(#{cpf})"
+  def cpf=(value)
+    super(value.tr('.', '').tr('-', '')) if value.present?
   end
 end
