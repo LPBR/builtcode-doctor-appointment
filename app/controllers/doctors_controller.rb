@@ -1,8 +1,10 @@
 class DoctorsController < ApplicationController
+  include Pagy::Backend
+
   before_action :set_doctor, only: %i(edit update destroy)
 
   def index
-    @doctors = Doctor.select(:id, :name, :crm, :crm_uf).order(name: :asc).decorate
+    @pagy, @doctors = pagy(Doctor.select(:id, :name, :crm, :crm_uf).order(name: :asc).decorate)
   end
 
   def new
