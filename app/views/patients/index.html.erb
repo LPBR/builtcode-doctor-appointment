@@ -1,6 +1,6 @@
 <div class="card">
-  <div class="card-header d-flex flex-row justify-content-between align-items-center">
-    <h1>Listagem de pacientes cadastrados</h1>
+  <div class="card-header d-flex justify-content-between align-items-center bg-light">
+    <h2 class="text-dark">Listagem de pacientes cadastrados</h1>
     <%= link_to "Cadastrar", new_patient_path, class: "btn btn-primary" %>
   </div>
   <div class="card-body">
@@ -8,7 +8,7 @@
       <table class="table">
         <thead class="thead-dark">
           <tr>
-            <th scope="col" class="w-25">Nome</th>
+            <th scope="col" class="w-50">Nome</th>
             <th scope="col" class="w-25">CPF</th>
             <th scope="col" class="w-25">Data de Nascimento</th>
             <th scope="col" colspan="2"></th>
