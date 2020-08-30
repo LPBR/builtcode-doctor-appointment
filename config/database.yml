@@ -16,4 +16,4 @@ test:
 
 production:
   <<: *default
-  database: builtcode_doctor_appointment_production
+  database: <%= ENV.fetch("DB_NAME") %>
