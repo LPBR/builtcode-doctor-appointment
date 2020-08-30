@@ -1,11 +1,11 @@
 <div class="card">
   <div class="card-header d-flex justify-content-between bg-light">
     <h2 class="text-dark">Dashboard</h1>
-    <%= form_with method: :get, class: "form-inline" do %>
+    <%= form_with method: :get, local: true, class: "form-inline" do %>
       <div class="form-group">
       <%= label_tag :doctor_id, "Médico", class: "mr-2" %>
       <%= select_tag :doctor_id,
-                     options_from_collection_for_select(@doctors, :id, :name_with_full_crm),
+                     options_from_collection_for_select(@doctors, :id, :name_with_full_crm, @doctor_id),
                      include_blank: "Todos os médicos", class: "form-control mr-3" %>
       </div>
       <%= submit_tag "Filtrar", class: "btn btn-primary" %>
