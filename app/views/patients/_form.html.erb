@@ -9,20 +9,25 @@
 <% end %>
 
 <%= form_with model: @patient, local: true do |f| %>
-  <div>
-    <%= f.label :name %>
-    <%= f.text_field :name, maxlength: "255", required: true %>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <%= f.label :name %>
+      <%= f.text_field :name, maxlength: "255", required: true, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-3">
+      <%= f.label :cpf %>
+      <%= f.text_field :cpf, minlength: "11", maxlength: "11", required: true, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-3">
+      <%= f.label :birth_date %>
+      <%= f.date_field :birth_date, required: true, class: "form-control" %>
+    </div>
   </div>
 
-  <div>
-    <%= f.label :cpf %>
-    <%= f.text_field :cpf, minlength: "11", maxlength: "11", required: true %>
+  <div class="d-flex justify-content-between mt-3">
+    <%= f.submit class: "btn btn-lg btn-primary" %>
+    <%= link_to "Voltar", :back, class: "btn btn-lg btn-secondary", role: "button" %>
   </div>
-
-  <div>
-    <%= f.label :birth_date %>
-    <%= f.date_field :birth_date, required: true %>
-  </div>
-
-  <%= f.submit %>
 <% end %>
