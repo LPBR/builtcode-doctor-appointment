@@ -1,1 +1,7 @@
 pt-BR:
+  time:
+    formats:
+      default: "%d/%m/%Y %H:%M"
+  date:
+    formats:
+      default: "%d/%m/%Y"

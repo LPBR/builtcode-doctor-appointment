@@ -9,23 +9,32 @@
 <% end %>
 
 <%= form_with model: @appointment, local: true do |f| %>
-  
-  <div>
-    <%= f.label :doctor_id %>
-    <%= f.select :doctor_id, options_from_collection_for_select(@doctors, :id, :name_with_full_crm),
-                             required: true %>
+  <div class="form-row">
+    <div class="form-group col-md-5">
+      <%= f.label :doctor_id %>
+      <%= f.select :doctor_id,
+                   options_from_collection_for_select(@doctors, :id, :name_with_full_crm, f.object.doctor_id),
+                   { include_blank: "Selecione o médico ..." },
+                   required: true, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-4">
+      <%= f.label :patient_id %>
+      <%= f.select :patient_id,
+                   options_from_collection_for_select(@patients, :id, :name_with_cpf, f.object.patient_id),
+                   { include_blank: "Selecione o paciente ..." },
+                   required: true, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-3">
+      <%= f.label :starts_at %>
+      <%= f.text_field :starts_at, placeholder: "dd/mm/yyyy hh:mm", class: "form-control date-time",
+                       value: f.object.starts_at.try(:strftime, "%d/%m/%Y %H:%M") %>
+    </div>  
   </div>
 
-  <div>
-    <%= f.label :patient_id %>
-    <%= f.select :patient_id, options_from_collection_for_select(@patients, :id, :name_with_cpf),
-                             required: true %>
+  <div class="d-flex justify-content-between mt-3">
+    <%= f.submit class: "btn btn-lg btn-primary" %>
+    <%= link_to "Voltar", :back, class: "btn btn-lg btn-secondary", role: "button" %>
   </div>
-
-  <div>
-    <%= f.label :starts_at %>
-    <%= f.datetime_field :starts_at, placeholder: "dd/mm/yyyy hh:mm" %>
-  </div>
-
-  <%= f.submit %>
 <% end %>

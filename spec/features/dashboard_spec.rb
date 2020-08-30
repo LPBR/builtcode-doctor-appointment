@@ -37,7 +37,7 @@ RSpec.feature "Dashboards", type: :feature do
 
     visit "/"
 
-    select doctor.name_with_full_crm, from: "Médico"
+    select doctor.decorate.name_with_full_crm, from: "Médico"
 
     click_on "Filtrar"
 

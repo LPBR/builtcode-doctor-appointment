@@ -10,8 +10,8 @@ RSpec.feature "EditAppointments", type: :feature do
 
     click_on "Editar"
 
-    select doctor.name_with_full_crm, from: "Médico"
-    select patient.name_with_cpf, from: "Paciente"
+    select doctor.decorate.name_with_full_crm, from: "Médico"
+    select patient.decorate.name_with_cpf, from: "Paciente"
     fill_in "Data e Hora",
             with: Faker::Time.between(from: DateTime.now, to: DateTime.now).
               change(hour: 9, min: 0, sec: 0)
@@ -26,8 +26,8 @@ RSpec.feature "EditAppointments", type: :feature do
 
     click_on "Editar"
 
-    select doctor.name_with_full_crm, from: "Médico"
-    select patient.name_with_cpf, from: "Paciente"
+    select doctor.decorate.name_with_full_crm, from: "Médico"
+    select patient.decorate.name_with_cpf, from: "Paciente"
     fill_in "Data e Hora",
             with: Faker::Time.between(from: DateTime.now, to: DateTime.now).
               change(hour: 8, min: 0, sec: 0)

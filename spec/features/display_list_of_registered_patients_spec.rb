@@ -8,7 +8,7 @@ RSpec.feature "DisplayListOfRegisteredPatients", type: :feature do
   end
 
   scenario "With registered patient" do
-    patient = create(:patient)
+    patient = create(:patient).decorate
 
     navigate_to_patients_index
 
