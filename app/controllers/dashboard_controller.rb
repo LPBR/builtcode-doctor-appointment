@@ -2,6 +2,8 @@ class DashboardController < ApplicationController
   def index
     @doctors = Doctor.order(name: :asc).decorate
 
+    @doctor_id = params[:doctor_id]
+
     doctor = Doctor.find(params[:doctor_id]) if params[:doctor_id].present?
 
     @dashboard = {
@@ -33,7 +35,7 @@ class DashboardController < ApplicationController
   end
 
   def patients_count(doctor)
-    return doctor.patients.count if doctor.present?
+    return doctor.patients.uniq.count if doctor.present?
 
     Patient.count
   end
