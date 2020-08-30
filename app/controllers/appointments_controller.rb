@@ -1,10 +1,12 @@
 class AppointmentsController < ApplicationController
+  include Pagy::Backend
+
   before_action :set_appointment, only: %i(edit update destroy)
   before_action :set_doctors, only: %i(new edit)
   before_action :set_patients, only: %i(new edit)
 
   def index
-    @appointments = Appointment.order(starts_at: :desc)
+    @pagy, @appointments = pagy(Appointment.order(starts_at: :desc))
   end
 
   def new
