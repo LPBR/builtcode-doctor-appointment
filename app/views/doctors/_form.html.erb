@@ -9,20 +9,27 @@
 <% end %>
 
 <%= form_with model: @doctor, local: true do |f| %>
-  <div>
-    <%= f.label :name %>
-    <%= f.text_field :name, maxlength: "255", required: true %>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <%= f.label :name %>
+      <%= f.text_field :name, maxlength: "255", required: true, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-4">
+      <%= f.label :crm %>
+      <%= f.text_field :crm, minlength: "4", maxlength: "10", required: true,
+                       class: "form-control number-only" %>
+    </div>
+
+    <div class="form-group col-md-2">
+      <%= f.label :crm_uf %>
+      <%= f.text_field :crm_uf, minlength: "2", maxlength: "2", required: true,
+                       class: "form-control" %>
+    </div>
   </div>
 
-  <div>
-    <%= f.label :crm %>
-    <%= f.text_field :crm, minlength: "4", maxlength: "10", required: true %>
+  <div class="d-flex justify-content-between mt-3">
+    <%= f.submit class: "btn btn-lg btn-primary" %>
+    <%= link_to "Voltar", :back, class: "btn btn-lg btn-secondary", role: "button" %>
   </div>
-
-  <div>
-    <%= f.label :crm_uf %>
-    <%= f.text_field :crm_uf, minlength: "2", maxlength: "2", required: true %>
-  </div>
-
-  <%= f.submit %>
 <% end %>

@@ -8,12 +8,4 @@ class Doctor < ApplicationRecord
 
   has_many :appointments, dependent: :restrict_with_error
   has_many :patients, through: :appointments, dependent: :restrict_with_error
-
-  def full_crm
-    "#{crm}/#{crm_uf}"
-  end
-
-  def name_with_full_crm
-    "#{name}(#{full_crm})"
-  end
 end
