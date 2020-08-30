@@ -1,8 +1,11 @@
 class PatientsController < ApplicationController
+  include Pagy::Backend
+
   before_action :set_patient, only: %i(edit update destroy)
 
   def index
-    @patients = Patient.select(:id, :name, :cpf, :birth_date).order(name: :asc).decorate
+    @pagy, @patients = pagy(Patient.select(:id, :name, :cpf, :birth_date).order(name: :asc))
+    @patients = @patients.decorate
   end
 
   def new
