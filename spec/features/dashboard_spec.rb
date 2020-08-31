@@ -21,7 +21,7 @@ RSpec.feature "Dashboards", type: :feature do
     expect(page).to have_css ".appointments-carried-out-count p", text: "2"
     expect(page).to have_css ".appointments-count p", text: "3"
 
-    expect(page).to have_css ".patients-seen-count p", text: "2"
+    expect(page).to have_css ".patients-seen-count p", text: "1"
     expect(page).to have_css ".patients-count p", text: "2"
   end
 
