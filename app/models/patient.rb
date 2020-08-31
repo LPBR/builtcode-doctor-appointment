@@ -1,4 +1,5 @@
 class Patient < ApplicationRecord
+  belongs_to :doctor
   has_many :appointments, dependent: :restrict_with_error
   has_many :doctors, through: :appointments
 

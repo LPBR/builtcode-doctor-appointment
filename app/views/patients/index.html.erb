@@ -8,9 +8,10 @@
       <table class="table">
         <thead class="thead-dark">
           <tr>
-            <th scope="col" class="w-50">Nome</th>
+            <th scope="col" class="w-25">Nome</th>
             <th scope="col" class="w-25">CPF</th>
             <th scope="col" class="w-25">Data de Nascimento</th>
+            <th scope="col" class="w-25">Médico</th>
             <th scope="col" colspan="2"></th>
           </tr>
         </thead>
@@ -20,6 +21,7 @@
               <td><%= patient.name %></td>
               <td><%= patient.cpf %></td>
               <td><%= l(patient.birth_date) %></td>
+              <td><%= patient.doctor.name_with_full_crm %></td>
               <td><%= link_to "Editar", edit_patient_path(patient) %></td>
               <td><%= link_to "Excluir", patient, method: :delete %></td>
             </tr>

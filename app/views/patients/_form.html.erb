@@ -26,6 +26,14 @@
       <%= f.text_field :birth_date, required: true, class: "form-control date",
                        value: f.object.birth_date.try(:strftime, "%d/%m/%Y") %>
     </div>
+
+    <div class="form-group col-md-6">
+      <%= f.label :doctor_id %>
+      <%= f.select :doctor_id,
+                   options_from_collection_for_select(@doctors, :id, :name_with_full_crm, f.object.doctor_id),
+                   { include_blank: "Selecione um médico ..." },
+                   required: true, class: "form-control" %>
+    </div>
   </div>
 
   <div class="d-flex justify-content-between mt-3">
