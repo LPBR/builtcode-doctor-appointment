@@ -37,9 +37,11 @@ class PatientsController < ApplicationController
   end
 
   def destroy
-    @patient.destroy
-
-    redirect_to patients_path, alert: { success: "Paciente excluído com sucesso." }
+    if @patient.destroy
+      redirect_to patients_path, alert: { success: "Paciente excluído com sucesso." }
+    else
+      redirect_to patients_path, alert: { error: "Paciente com consultas não pode ser excluído." }
+    end
   end
 
   private
