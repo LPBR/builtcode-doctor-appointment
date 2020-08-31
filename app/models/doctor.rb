@@ -7,5 +7,6 @@ class Doctor < ApplicationRecord
   validates_uniqueness_of :crm, scope: [:crm_uf], case_sensitive: false
 
   has_many :appointments, dependent: :restrict_with_error
-  has_many :patients, through: :appointments, dependent: :restrict_with_error
+  has_many :patients, dependent: :restrict_with_error
+  has_many :patients_with_appointment, through: :appointments, source: :patient
 end

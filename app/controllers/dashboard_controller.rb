@@ -29,7 +29,7 @@ class DashboardController < ApplicationController
   end
 
   def patients_seen_count(doctor)
-    return doctor.patients.seen.uniq.count if doctor.present?
+    return doctor.patients_with_appointment.seen.uniq.count if doctor.present?
 
     Patient.seen.count
   end

@@ -27,7 +27,7 @@ RSpec.feature "Dashboards", type: :feature do
 
   scenario "With a doctor filter selected" do
     doctor = create(:doctor)
-    patient = create(:patient)
+    patient = create(:patient, doctor: doctor)
     create(:appointment, starts_at: (DateTime.now - 2.day).change(hour: 9, min: 30, sec: 0))
     create(:appointment, patient: patient, doctor: doctor,
                          starts_at: (DateTime.now - 1.day).change(hour: 9, min: 0, sec: 0))

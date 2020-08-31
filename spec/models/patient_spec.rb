@@ -4,6 +4,7 @@ RSpec.describe Patient, type: :model do
   describe "associations" do
     it { should have_many(:doctors).through(:appointments) }
     it { should have_many(:appointments) }
+    it { should belong_to(:doctor) }
   end
 
   describe "validations" do
